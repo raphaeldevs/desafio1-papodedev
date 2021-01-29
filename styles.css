@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@600;700&display=swap');
+
+:root {
+  --green: #b5db48;
+  --red: #ff3838;
+  --blue: #3864ff;
+  --text-primary: #29455f;
+  --text-secondary: #8f8f8f;
+  --text-normal: #808080;
+  --layout-color: #b5db48;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  padding: 20rem 0;
+}
+
+.card {
+  width: 26.3rem;
+  height: 38.6rem;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+
+  color: var(--text-normal);
+
+  background: #fff;
+
+  border-radius: 1.6rem 5rem 1.6rem 1.6rem;
+
+  box-shadow: 0 0.4rem 4.2rem rgba(0, 0, 0, 0.25);
+
+  position: relative;
+}
+
+.card:first-child {
+  margin-right: 10%;
+}
+
+.card-path {
+  width: 100%;
+  height: 20rem;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-radius: 1.6rem 5rem 0;
+  overflow: hidden;
+}
+
+.card-path::before {
+  content: '';
+
+  width: 40rem;
+  height: 40rem;
+
+  position: absolute;
+  top: -13rem;
+  left: -1.5rem;
+
+  background: linear-gradient(
+    226deg,
+    rgba(196, 196, 196, 0.3) -19.56%,
+    rgba(196, 196, 196, 0) 120%
+  );
+
+  transform: rotateZ(-26deg);
+
+  clip-path: circle(90% at 100% 0);
+
+  transition: clip-path 0.4s ease;
+}
+
+.card:hover .card-path::before {
+  clip-path: circle(95% at 100% 0);
+}
+
+.card-image {
+  display: flex;
+  justify-content: center;
+
+  height: 11rem;
+
+  position: relative;
+}
+
+.card-image img {
+  width: 125%;
+
+  position: absolute;
+  top: -54%;
+  right: -29%;
+
+  user-select: none;
+}
+
+.card:hover .card-image img {
+  animation: tennisFloat 2s ease infinite alternate;
+}
+
+.card-header h3,
+.card-header h4 {
+  font-family: Montserrat, sans-serif;
+}
+
+.card-header h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+
+  line-height: 1.7rem;
+
+  color: var(--text-secondary);
+}
+
+.card-header h3 {
+  font-size: 2.6rem;
+  font-weight: 700;
+
+  line-height: 3.2rem;
+
+  color: var(--text-primary);
+}
+
+.card-header .price {
+  margin-top: 1.5rem;
+
+  text-align: right;
+}
+
+.card-header .price span {
+  font-weight: 700;
+  font-size: 1.4rem;
+
+  line-height: 1.9rem;
+}
+
+.card-header .price strong {
+  color: var(--text-primary);
+
+  font-size: 2.2rem;
+
+  line-height: 3rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  flex: 1;
+
+  position: relative;
+}
+
+.card-body h4 {
+  margin-bottom: 0.6rem;
+
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.card-body .colors-container .colors {
+  display: flex;
+
+  margin-bottom: 1.3rem;
+}
+
+.colors-container .colors input {
+  width: 2.1rem;
+  height: 2.1rem;
+
+  margin-right: 2.3rem;
+
+  appearance: none;
+
+  outline: none;
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.colors-container .colors input::before {
+  content: '';
+
+  position: absolute;
+
+  width: 2.1rem;
+  height: 2.1rem;
+
+  border-radius: 50%;
+}
+
+.colors-container .colors input:checked::after {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border-radius: 50%;
+  border: 0.1rem solid rgba(0, 0, 0, 0.06);
+
+  box-sizing: border-box;
+}
+
+.colors input[value='green']::before {
+  background-color: var(--green);
+}
+
+.colors input[value='red']::before {
+  background-color: var(--red);
+}
+
+.colors input[value='blue']::before {
+  background-color: var(--blue);
+}
+
+.sizes-container .sizes {
+  display: flex;
+
+  user-select: none;
+}
+
+.sizes-container .sizes span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 2.3rem;
+  height: 2.3rem;
+
+  margin-right: 1rem;
+
+  font-family: Montserrat, sans-serif;
+
+  border: 0.1rem solid rgba(0, 0, 0, 0.04);
+  border-radius: 0.8rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.4s ease;
+}
+
+.sizes-container .sizes span.selected {
+  border: none;
+
+  background-color: var(--layout-color);
+
+  color: white;
+}
+
+.cart-button {
+  width: 4.9rem;
+  height: 8rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 2rem 0;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  outline: none;
+
+  border: none;
+  border-radius: 1.6rem;
+
+  background-color: var(--layout-color);
+
+  transition: background-color .3s ease;
+
+  cursor: pointer;
+}
+
+.cart-button .expand-more {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 0.5rem;
+}
+
+.cart-button .expand-more img:nth-child(1) {
+  opacity: 0.2;
+}
+
+.cart-button .expand-more img:nth-child(2) {
+  opacity: 0.4;
+}
+
+.cart-button .expand-more img:nth-child(3) {
+  opacity: 0.6;
+}
+
+.cart-button:hover .expand-more img:nth-child(1) {
+  animation: cartButton 0.4s;
+}
+
+.cart-button:hover .expand-more img:nth-child(2) {
+  animation: cartButton 0.4s 0.2s;
+}
+
+.cart-button:hover .expand-more img:nth-child(3) {
+  animation: cartButton 0.4s 0.4s;
+}
+
+.card.transparent {
+  --text-normal: #fff;
+
+  background-color: none;
+  background: radial-gradient(
+    100% 100% at 0% 0%,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ), url('./images/background.png') no-repeat center center;
+  
+  box-shadow: 0 0.4rem 2.4rem -0.1rem rgba(0, 0, 0, 0.1);
+}
+
+.card.transparent .card-header {
+  --text-primary: #fff;
+}
+
+.card.transparent .card-header h4 {
+  color: var(--layout-color);
+
+  transition: color .3s ease;
+}
+
+.card.transparent .card-header .price span {
+  color: #dadada !important;
+}
+
+.card.transparent .colors-container .colors input:checked::after {
+  width: 2.15rem;
+  height: 2.15rem;
+
+  border: 0.1rem solid white;
+
+  box-sizing: border-box;
+}
+
+.card.transparent .sizes-container .sizes span {
+  border: 0.1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.card.transparent .sizes-container .sizes span.selected {
+  background-color: white;
+
+  color: var(--text-primary);
+}
+
+@keyframes tennisFloat {
+  0% {
+    top: -54%;
+  }
+
+  100% {
+    top: -34%;
+  }
+}
+
+@keyframes cartButton {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 750px) {
+  .wrapper {
+    justify-content: stretch;
+    flex-direction: column;
+    padding: 10rem 0 5rem;
+
+    overflow-x: hidden;
+  }
+
+  .card:first-child {
+    margin: 0 0 10rem;
+  }
+}
